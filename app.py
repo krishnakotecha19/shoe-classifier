@@ -4,6 +4,10 @@ import numpy as np
 from PIL import Image
 from keras.layers import TFSMLayer
 from keras.models import Sequential
+import sys
+import streamlit as st
+st.write("Python version:", sys.version)
+
 
 @st.cache_resource
 def load_model():
