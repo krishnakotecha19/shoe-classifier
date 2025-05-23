@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual envs
+venv/
+intel_env/
+Dependencies/
+__MACOSX/
+
+# System files
+.DS_Store
+
+# Large data/models (optional, use Drive or S3 for hosting)
+*.h5
+*.pkl
+*.zip
+*.csv
+*.mp4
+*.avi
