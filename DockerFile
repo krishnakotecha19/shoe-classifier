@@ -1,46 +1,18 @@
-FROM python:3.10-slim
+# Base image
+FROM python:3.9-slim
 
-ENV PORT 7860
-EXPOSE 7860
-
-# Set working directory
+# Working directory banate hain
 WORKDIR /app
-
-# Copy all files into /app
-COPY . .
-
-# Make a .streamlit folder inside /app with correct permissions
-RUN mkdir -p /app/.streamlit
-
-# Set environment variable to force Streamlit to use the app folder
-ENV STREAMLIT_CONFIG_DIR=/app/.streamlitFROM python:3.10-slim
-
-# Environment config
-ENV PORT 7860
-EXPOSE 7860
-
-# Set working directory
-WORKDIR /app
-
-# Copy all files
-COPY . .
-
-# Create writable .streamlit directory in /app
-RUN mkdir -p /app/.streamlit
-
-# Tell Streamlit to use that directory
-ENV STREAMLIT_CONFIG_DIR=/app/.streamlit
-
-# Install dependencies
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-
-# Launch the app
-CMD ["streamlit", "run", "app.py", "--server.port=7860", "--server.address=0.0.0.0"]
 
 # Install requirements
-RUN pip install --upgrade pip
+COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 
-# Run Streamlit app
-CMD ["streamlit", "run", "app.py", "--server.port=7860", "--server.address=0.0.0.0"]
+# Code copy karo
+COPY . .
+
+# Streamlit ko allow karo config likhne ke liye
+ENV STREAMLIT_CONFIG_DIR=/app/.streamlit
+
+# Ye tumhara app run karega
+CMD ["streamlit", "run", "src/app.py", "--server.port=7860", "--server.address=0.0.0.0"]
