@@ -1,7 +1,6 @@
-streamlit
-tensorflow==2.12.0
-keras
-pillow
+streamlit==1.32.2
+tensorflow==2.15.0
 numpy
-skiket-learn
-
+Pillow
+scikit-learn
+keras
