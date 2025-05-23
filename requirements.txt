@@ -1,6 +1,6 @@
 streamlit==1.32.2
-tensorflow==2.14.0
+tensorflow==2.15.0
 numpy
-Pillow
+pillow
 scikit-learn
 keras
