@@ -1,5 +1,8 @@
 FROM python:3.10-slim
 
+# Install system-level dependencies for image handling
+RUN apt-get update && apt-get install -y libgl1-mesa-glx
+
 # Set environment
 ENV PORT 7860
 EXPOSE 7860
@@ -10,9 +13,9 @@ WORKDIR /app
 # Copy everything
 COPY . .
 
-# Install dependencies
+# Install Python dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Start the Streamlit app
+# Run Streamlit app
 CMD ["streamlit", "run", "app.py", "--server.port=7860", "--server.address=0.0.0.0"]
